@@ -15,26 +15,15 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 // const upload = multer(multerConfig);
 
-// Rotas de usarios(Login, cadastro)
+// Criação de usuario e sessão
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
+// Rotas de usuarios
+routes.get('/users', UserController.index);
+routes.get('/users/:id', UserController.show);
 routes.put('/users', UserController.update);
-
-// routes.get('/providers', ProviderController.index);
-// routes.get('/providers/:providerId/available', AvailableController.index);
-
-// routes.get('/Appointments', AppointmentController.index);
-// routes.post('/Appointments', AppointmentController.store);
-// routes.delete('/Appointments/:id', AppointmentController.delete);
-
-// routes.get('/schedule', ScheduleController.index);
-
-// routes.get('/notifications', NotificationController.index);
-// routes.put('/notifications/:id', NotificationController.update);
-
-// routes.post('/files', upload.single('file'), FileController.store);
 
 export default routes;

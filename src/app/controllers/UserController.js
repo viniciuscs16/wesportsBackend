@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 
+import sequelize from 'sequelize';
 import User from '../models/User';
 
 class UserController {
@@ -129,6 +130,27 @@ class UserController {
       email,
       representative,
     });
+  }
+
+  // Procura por usuarios
+  async index(request, response) {
+    const users = await User.findAll({
+      where: { representative: false },
+    });
+    return response.json(users);
+  }
+
+  // Procura um usuario específico
+  async show(request, response) {
+    const { id } = request.params;
+
+    const user = await User.findOne({ where: { id } });
+
+    if (!user) {
+      return response.status(400).json({ message: 'Usuário não encontrado.' });
+    }
+
+    return response.json({ user });
   }
 }
 export default new UserController();

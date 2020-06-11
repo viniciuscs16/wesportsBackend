@@ -1,25 +1,41 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable quote-props */
 module.exports = {
-  env: {
-    es6: true,
-    node: true,
-  },
-  extends: ["airbnb-base", "prettier"],
-  plugins: ["prettier"],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-  },
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: "module",
-  },
-  rules: {
-    "prettier/prettier": "error",
-    "class-methods-use-this": "off",
-    "no-param-reassing": "off",
-    "camelcase": "off",
-    "no-unused-vars": ["error", { argsIgnorePattern: "next" }],
-  },
+    env: {
+        es6: true,
+        node: true,
+    },
+    extends: ['airbnb-base', 'prettier'],
+    plugins: ['prettier'],
+    globals: {
+        Atomics: 'readonly',
+        SharedArrayBuffer: 'readonly',
+    },
+    parserOptions: {
+        ecmaVersion: 2018,
+        sourceType: 'module',
+    },
+    rules: {
+        'prettier/prettier': [
+            'error',
+            {},
+            {
+                usePrettierrc: false,
+            },
+        ],
+        'prettier/prettier': [
+            'error',
+            {},
+            {
+                fileInfoOptions: {
+                    withNodeModules: true,
+                },
+            },
+        ],
+        'prettier/prettier': 'error',
+        'class-methods-use-this': 'off',
+        'no-param-reassing': 'off',
+        camelcase: 'off',
+        'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    },
 };
